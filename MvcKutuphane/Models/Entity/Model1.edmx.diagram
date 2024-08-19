@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d16333398dce42d8b54d5cade8aea8d7" Name="Diagram1">
+        <EntityTypeShape EntityType="DBKutuphaneModel.TblCezalar" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKutuphaneModel.TblHareket" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKutuphaneModel.TblKasa" Width="1.5" PointX="7.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKutuphaneModel.TblKategori" Width="1.5" PointX="1.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKutuphaneModel.TblKitap" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKutuphaneModel.TblPersonel" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKutuphaneModel.TblUyeler" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKutuphaneModel.TblYazar" Width="1.5" PointX="1.5" PointY="10" IsExpanded="true" />
+        <AssociationConnector Association="DBKutuphaneModel.FK_TblCezalar_TblHareket" ManuallyRouted="false" />
+        <AssociationConnector Association="DBKutuphaneModel.FK_TblCezalar_TblUyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="DBKutuphaneModel.FK_TblHareket_TblKitap" ManuallyRouted="false" />
+        <AssociationConnector Association="DBKutuphaneModel.FK_TblHareket_TblPersonel" ManuallyRouted="false" />
+        <AssociationConnector Association="DBKutuphaneModel.FK_TblHareket_TblUyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="DBKutuphaneModel.FK_TblKitap_TblKategori" ManuallyRouted="false" />
+        <AssociationConnector Association="DBKutuphaneModel.FK_TblKitap_TblYazar" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

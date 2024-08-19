@@ -1,0 +1,80 @@
+﻿
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        body {
+            font-family: "Lato", sans-serif;
+        }
+        .sidebar {
+            height: 100%;
+            width: 240px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+        .sidebar a {
+            padding: 10px 14px 10px 10px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+        }
+        .sidebar a:hover {
+            color: #0094ff;
+        }
+        .main {
+            margin-left: 240px; /* Same as the width of the sidenav */
+
+            padding: 0px 10px;
+        }
+        @@media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+            .sidebar a {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="/istatistik/Index/"><i class="fa fa-fw fa-home"></i> &nbsp; Ana Sayfa</a>
+        <a href="/Kategori/Index/"><i class="fa fa-fw fa-bars"></i> &nbsp; Kategoriler</a>
+        <a href="/Kitap/Index/"><i class="fa fa-fw fa-book"></i> &nbsp; Kitaplar</a>
+        <a href="/Yazar/Index/"><i class="fa fa-fw fa-pencil"></i> &nbsp; Yazarlar</a>
+        <a href="/Uye/Index/"><i class="fa fa-fw fa-user"></i> &nbsp; Üyeler</a>
+        <a href="/Personel/Index/"><i class="fa fa-fw fa-handshake-o"></i> &nbsp; Personeller</a>
+        <a href="/Odunc/OduncVer/"><i class="fa fa-fw fa-arrow-circle-o-up"></i> &nbsp; Ödünç Kitap Ver</a>
+        <a href="/Odunc/Index/"><i class="fa fa-fw fa-arrow-circle-o-down"></i> &nbsp; Ödünç Kitap Al</a>
+        <a href="/Kasa/Index/"><i class="fa fa-fw fa-money"></i> &nbsp; Kasa</a>
+        <a href="/islem/index/"><i class="fa fa-fw fa-dashboard"></i> &nbsp; İşlemler</a>
+        <a href="#"><i class="fa fa-fw fa-cog"></i> &nbsp; Ayarlar</a>
+        <a href="#"><i class="fa fa-fw fa-question-circle"></i> &nbsp; Yardım</a>
+        <a href="#"><i class="fa fa-fw fa-sign-out"></i> &nbsp; Çıkış</a>
+    </div>
+    <div class="main">
+        @RenderBody()
+    </div>
+</body>
+
+</html>
