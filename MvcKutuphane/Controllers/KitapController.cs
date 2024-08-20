@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcKutuphane.Models.Entity;
+using static System.Net.WebRequestMethods;
 
 namespace MvcKutuphane.Controllers
 {
@@ -68,7 +69,50 @@ namespace MvcKutuphane.Controllers
         public ActionResult KitapGetir(int id)
         {
             var tbl = db.TblKitap.Find(id);
+            // Listeden öge seçileceği için List<SelectListItem> ifadesi kullanılıyor.
+            // LINQ ifade ile dropbox içerisine gelecek kategori değerleri belirlenir.
+            List<SelectListItem> deger1 = (from i in db.TblKategori.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = i.AD,
+                                               Value = i.ID.ToString()
+                                           }).ToList();
+            // dgr1 değerine deger1 değerini taşı.
+            // dgr1 değeri View tarafında çağırılacak.
+            ViewBag.dgr1 = deger1;
+
+            // YAZAR İÇİN
+            List<SelectListItem> deger2 = (from y in db.TblYazar.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = y.AD + ' ' + y.SOYAD,
+                                               Value = y.ID.ToString()
+                                           }).ToList();
+            ViewBag.dgr2 = deger2;
+
             return View("KitapGetir", tbl); // ktg'den gelen değerle KategoriGetir View'ını döndür
+        }
+
+        public ActionResult KitapGuncelle(TblKitap ktp)
+        {
+            // Kitabı bul
+            var kitap = db.TblKitap.Find(ktp.ID);
+            // Atamaları bul  (kitap --> veritabanındaki sütun, k--> parametre olarak gönderilen nesne)
+            kitap.AD = ktp.AD;
+            kitap.BASIMYIL = ktp.BASIMYIL;
+            kitap.SAYFA = ktp.SAYFA;  
+            kitap.YAYINEVI = ktp.YAYINEVI;
+
+            // kategori ve yazar değerleri veritabanında ID olarak tutulduğu için ekleme işlemi yapılırken seçilen kategori
+            // ve yazarın IDlerine erişilip, tabloya bu IDler eklenmelidir. İsimler değil.
+            var ktg = db.TblKategori.Where(k => k.ID == ktp.TblKategori.ID).FirstOrDefault();
+            var yzr = db.TblYazar.Where(y => y.ID == ktp.TblYazar.ID).FirstOrDefault();
+
+            kitap.KATEGORI = ktg.ID;
+            kitap.YAZAR = yzr.ID;
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
         
     }
