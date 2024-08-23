@@ -39,7 +39,7 @@ namespace MvcKutuphane.Controllers
         {
             db.TblKategori.Add(k);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
         // RedirectToAction --> farklı bir action methoda yönlendirir.
         // // Metottaki "int id" paramtresi    "<a href="/Kategori/KategoriSil/@k.ID">"   ifadesinden alınıyor.  
@@ -59,6 +59,14 @@ namespace MvcKutuphane.Controllers
         {
             var ktg = db.TblKategori.Find(id);
             return View("KategoriGetir", ktg); // ktg'den gelen değerle KategoriGetir View'ını döndür
+        }
+
+        public ActionResult KategoriGuncelle(TblKategori k)
+        {
+            var ktg = db.TblKategori.Find(k.ID);
+            ktg.AD = k.AD;
+            db.SaveChanges();
+            return RedirectToAction("Index");   
         }
         
     }

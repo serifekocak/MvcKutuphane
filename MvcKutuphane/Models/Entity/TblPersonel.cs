@@ -11,7 +11,8 @@ namespace MvcKutuphane.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TblPersonel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace MvcKutuphane.Models.Entity
         }
     
         public byte ID { get; set; }
+        [Required(ErrorMessage = "Personel Adý Boþ Býrakýlamaz!")]
         public string PERSONEL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
